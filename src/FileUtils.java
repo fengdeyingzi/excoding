@@ -3,6 +3,9 @@ import java.util.*;
 
 public class FileUtils
 {
+	/*
+	 * 列出目录下所有文件
+	 */
 	public static Collection<File> listFiles(File file,String[] miniType,boolean ischeck)
 	{
 		ArrayList<File> filelist = new ArrayList();
