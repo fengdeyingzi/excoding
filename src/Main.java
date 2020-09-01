@@ -15,7 +15,7 @@ public class Main {
     	String path=null;
     	String coding=null; //编码
     	String ocodeing=null; //目标编码
-    	String types=null; //删除文件的类型
+    	String types=".java|.c|.h|.txt|.md|.php|.py|.bat|.sh|.cpp|.cc|.js|.ts|.htm|.html|.xml|.fxml|.json|.swift|.kt|.dart|.s"; //删除文件的类型
     	Main main = new Main();
         
         for(int i=0;i<args.length;i++){
@@ -63,6 +63,7 @@ public class Main {
         	path = input.nextLine();
         	if(path.equals("-h")){
         		main.outHelp();
+        		Thread.sleep(5000);
         	}
         	else{
         		System.out.println("请输入文件夹编码（输入前缀数字即可）\n    1.GBK\n    2.UTF-8\n");
@@ -88,7 +89,7 @@ public class Main {
         		System.out.println("你的输入有误");
         	}
         	if(path!=null && coding!=null && ocodeing!=null){
-        		main.encodeFiles(path,coding,ocodeing);
+        		main.encodeFiles(path,coding,ocodeing,types.split("\\|"));
         	}
         	}
         	
@@ -104,7 +105,7 @@ public class Main {
         		System.out.println("-ocoding 未知，请输入目标编码");
         	}
         	else
-        	main.encodeFiles(path,coding,ocodeing);
+        	main.encodeFiles(path,coding,ocodeing,types.split("\\|"));
         }
         else if(type.equals("removefiles")){
         	if(path==null){
@@ -139,10 +140,10 @@ public class Main {
     }
     
     //转换某个文件夹下的文件
-    void encodeFiles(String path,String coding, String encoding){
+    void encodeFiles(String path,String coding, String encoding,String[] types){
     	System.out.println("转换编码"+coding+" to "+encoding);
     	 // 获取所有java文件
-        Collection<File> javaGbkFileCol = FileUtils.listFiles(new File(path), true);
+        Collection<File> javaGbkFileCol = FileUtils.listFiles(new File(path),types, true);
         for (File javaGbkFile : javaGbkFileCol) {
             // UTF8格式文件路径
             String utf8FilePath2 = javaGbkFile.getAbsolutePath();// utf8DirPath + javaGbkFile.getAbsolutePath().substring(srcDirPath.length());

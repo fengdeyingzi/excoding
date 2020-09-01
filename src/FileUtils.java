@@ -34,6 +34,7 @@ public class FileUtils
 		return filelist;
 	}
 	
+	//列出目录下所有文件
 	public static Collection<File> listFiles(File file,boolean ischeck)
 	{
 		ArrayList<File> filelist = new ArrayList();
@@ -65,6 +66,7 @@ public class FileUtils
 		}
 	}
 	
+	//以指定编码写入文本
 	public static void writeText(String filename,String info,String coding) {
 		File file = new File(filename);
 
@@ -88,6 +90,7 @@ public class FileUtils
 
 	}
 
+	//以指定编码读取文本
 	public static String read(File file,String encoding) throws IOException
 	{
 		String content = "";
