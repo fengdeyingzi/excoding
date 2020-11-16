@@ -129,6 +129,8 @@ public class Main {
 				+"-coding 转换编码\n"
 				+"-ocoding 目标编码\n"
 				+"风的影子 制作");
+    	Scanner input = new Scanner(System.in);
+    	String num = input.nextLine();
     }
     
     //删除某个文件夹下所有的指定文件类型
